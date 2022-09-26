@@ -87,3 +87,21 @@ Após a escolha da categoria e palavra, e tranformar cada letra da palavra num a
 `setLetters(letters);`
 
 Agora, o jogo é inciado com todos os seus estados definidos.
+
+**Estruturando o componente **Play**
+Para receber os states iniciados
+
+- Passa os states por prop para o componente Play;
+`{stage === 'start' && <Start gamePlay={gamePlay} pickedCategory={pickedCategory} pickedWord={pickedWord} letters={letters} />}`
+
+- Recebe os props no componente Play:
+`const Play = ({gameOver, pickedCategory, pickedWord, letters})`
+
+Além desses, mais states foram criados para ser inicializados: letras acertadas, letras erradas, número de tentativas e pontuação. Todos também passados como prop.
+
+```
+const [guessedLetters, setGuessedLetters] = useState([]);
+const [wrongLetters, setWrongLetters] = useState([]);
+const [guesses, setGuesses] = useState(3);
+const [score, setScore] = useState(0)
+```
