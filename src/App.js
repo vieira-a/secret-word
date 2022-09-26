@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+//Styles
 import './App.css';
 
+//Data
+import { wordsList } from './data/words'
+
+//Hooks
+import { useState } from 'react';
+
+//Components
+import Over from './components/Over';
+import Play from './components/Play';
+import Start from './components/Start';
+
+//Create game stages
+const stages = [
+  {id: 0, name: 'start'},
+  {id: 1, name: 'play'},
+  {id: 2, name: "over"}]
+
 function App() {
+  //Defines start stage
+  const [stage, setStage] = useState(stages[0].name);
+  const [words] = useState(wordsList)
+  console.log(words)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {stage === 'start' && <Start/>}
+      {stage === 'play' && <Play/>}
+      {stage === 'over' && <Over/>}
     </div>
   );
 }
