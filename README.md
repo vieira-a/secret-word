@@ -32,3 +32,7 @@ return (
     </div>
   );
 ```
+
+**Alternando entre estágios**
+Foram criadas 3 funções para alternar entre os estágios do jogo. Cada função altera o stage através do setStage, são passadas como prop para os componentes, e executadas através dos botões de cada componente; isso faz com que cada componente ative o próximo stage.
+

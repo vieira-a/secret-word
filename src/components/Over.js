@@ -1,8 +1,11 @@
 import React from 'react'
 
-const Over = () => {
+const Over = ({gameRetry}) => {
   return (
-    <div>Game Over</div>
+    <div>
+        <h1>Game over</h1>
+        <button onClick={gameRetry}>Iniciar novamente</button>
+        </div>
   )
 }
 

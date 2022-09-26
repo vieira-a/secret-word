@@ -1,8 +1,11 @@
 import React from 'react'
 
-const Play = () => {
+const Play = ({gameOver}) => {
   return (
-    <div>Gameplay</div>
+    <div>
+        <h1>Gameplay</h1>
+        <button onClick={gameOver}>Finalizar jogo</button>
+    </div>
   )
 }
 
