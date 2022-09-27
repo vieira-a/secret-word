@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+}
+
+.usedLetters {
+    width: 50vw;
+    display: flex;
+    margin-inline: auto;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(to left, #00c853, #b2ff59);
+    height: 100px;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #b2ff59;
+}
+
+.secretWordPanel {
+    display: flex;
+    margin-inline: auto;
+    
+    padding: 1.5rem;
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 15px;
+    border-image-source: linear-gradient(to left, #00c853, #b2ff59);
+
+}
+.squares {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 2px solid white;
+    font-size: 3rem;
+    
+}
