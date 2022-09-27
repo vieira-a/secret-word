@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Over = ({gameRetry}) => {
+const Over = ({gameRetry, score}) => {
   return (
     <div>
-        <h1>Game over</h1>
+        <h1>Fim do jogo</h1>
+        <p>A sua pontuação foi: {score}</p>
         <button onClick={gameRetry}>Iniciar novamente</button>
         </div>
   )

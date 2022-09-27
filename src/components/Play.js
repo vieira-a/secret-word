@@ -15,16 +15,14 @@ const handleSubmit = (e) => {
 
   return (
     <div>
-        <h1>Gameplay</h1>
-        <p>Dica: {pickedCategory}</p>
-        <p>Tentativas restantes: {guesses}</p>
-        <p>Palavra secreta: {pickedWord}</p>
-        <p>Pontuação: {score}</p>
+
         <p>Letras utilizadas:  
           {wrongLetters.map((letter, index) => (
             <span key={index}>{letter}, </span>
           ))}
-          </p>
+        </p>
+        
+
         <div>
           {letters.map((letter, index) => 
           guessedLetters.includes(letter) ? (
@@ -36,10 +34,15 @@ const handleSubmit = (e) => {
         )
         )}
         </div>
+
         <form onSubmit={handleSubmit}>
           <label><input type="text" name='letter' maxLength={1} required onChange={(e) => setLetter(e.target.value)} value={letter} ref={letterInputRef}/></label>
           <button type='submit'>Jogar</button>
         </form>
+
+        <p>Dica: {pickedCategory}</p>
+        <p>Tentativas restantes: {guesses}</p>
+        <p>Pontuação: {score}</p>
     </div>
   )
 }
