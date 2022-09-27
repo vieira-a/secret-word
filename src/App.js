@@ -5,7 +5,7 @@ import './App.css';
 import { wordsList } from './data/words'
 
 //Hooks
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 //Components
 import Over from './components/Over';
@@ -18,6 +18,8 @@ const stages = [
   {id: 1, name: 'play'},
   {id: 2, name: "over"}]
 
+let totalGuesses = 3
+
 function App() {
 
   const [stage, setStage] = useState(stages[0].name);
@@ -29,7 +31,7 @@ function App() {
 
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
-  const [guesses, setGuesses] = useState(3);
+  const [guesses, setGuesses] = useState(totalGuesses);
   const [score, setScore] = useState(0)
   
   const getCategoryAndWord = () => {
@@ -51,19 +53,55 @@ function App() {
     setPickedCategory(category);
     setPickedWord(word);
     setLetters(wordLetters);
-
     setStage(stages[1].name)
 
   }
 
   const verifyLetter = (letter) => {
-    console.log(letter)
+    
+    const normalizedLetter = letter.toLowerCase()
+
+    if(
+      guessedLetters.includes(normalizedLetter) || 
+      wrongLetters.includes(normalizedLetter)
+    ) {
+      return;
+    }
+    if(letters.includes(normalizedLetter)){
+      setGuessedLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters, 
+        normalizedLetter,
+      ]);
+
+    } else {
+      setWrongLetters((actualWrongLetters) => [
+        ...actualWrongLetters, normalizedLetter,
+      ]);
+
+      setGuesses((actualGuesses) => actualGuesses - 1);
+
+    }
+
   }
+
+  const clearLetterStates = () => {
+    setGuessedLetters([])
+    setWrongLetters([])
+  }
+
+  useEffect(() => {
+
+    if(guesses <= 0){
+      clearLetterStates()
+      setStage(stages[2].name);
+    }
+  }, [guesses])
 
   const gameRetry = () => {
+    setScore(0)
+    setGuesses(totalGuesses)
     setStage(stages[0].name)
   }
-
 
   return (
     <div className="App">

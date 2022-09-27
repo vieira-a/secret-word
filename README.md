@@ -105,3 +105,20 @@ const [wrongLetters, setWrongLetters] = useState([]);
 const [guesses, setGuesses] = useState(3);
 const [score, setScore] = useState(0)
 ```
+
+**Implementar nível de dificuldade**
+
+```
+let levelGame = 'easy'
+let totalGuesses = 0
+
+if(levelGame === 'easy') {
+  totalGuesses = 10
+} else if (levelGame === 'normal') {
+  totalGuesses = 5
+} else if (levelGame === 'hard') {
+  totalGuesses = 3
+}
+
+console.log(totalGuesses)
+```
